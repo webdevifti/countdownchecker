@@ -95,8 +95,12 @@
 <body>
 	<div class="wrapper">
 		<div class="content">
-			<h1>Eid Ul-Azah In</h1>
+			<h1>Happy New Year 2022</h1>
 			<div class="countdown">
+				<div>
+					<div id="months">00</div>
+					<span>Months</span>
+				</div>
 				<div>
 					<div id="days">00</div>
 					<span>Days</span>
@@ -116,12 +120,13 @@
 			</div>
 		</div>
 		<div class="eid-day">
-			<img src="eid.gif" alt="Eid Mubarok">
+			<img src="2022.gif" alt="Happy New Year">
 		</div>
 	</div>
 
 	<script type="text/javascript">
-		const eidulfitr = 'July 21 2021';
+		const happynewYear = 'January 01 2022';
+		const monthsDiv = document.getElementById('months');
 		const daysDiv = document.getElementById('days');
 		const hrsDiv = document.getElementById('hours');
 		const minDiv = document.getElementById('min');
@@ -129,10 +134,11 @@
 		const eidDay = document.querySelector('.eid-day');
 		const content = document.querySelector('.content');
 		function countdown(){
-			const eidday = new Date(eidulfitr);
+			const eidday = new Date(happynewYear);
 			const currentday = new Date();
 			const totaltime = (eidday - currentday) / 1000;
-			const days = Math.floor(totaltime / 3600 / 24);
+			const months = Math.floor(totaltime / 3600 / 30 / 24);
+			const days = Math.floor(totaltime / 3600 /  30 / 24);
 			const hrs = Math.floor((totaltime / 3600) % 24);
 			const min = Math.floor(totaltime / 60) % 60;
 			const sec = Math.floor(totaltime) % 60;
@@ -143,6 +149,7 @@
 				content.style.display = 'none';
 				eidDay.style.display = 'block';
  			}else{
+				monthsDiv.innerHTML = months;
 				daysDiv.innerHTML = days;
 				hrsDiv.innerHTML = hrs;
 				minDiv.innerHTML = min;
